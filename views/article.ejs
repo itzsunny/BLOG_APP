@@ -1,0 +1,31 @@
+<% include partials/header %>
+
+<div class="wrapper">
+  <div class="article_container">
+  <h1 class="article_title"><%= user.article_title %></h1>
+  <p class="article_intro"><%= user.article_intro %></p>
+  <h2 class="article_subtitle"><%= user.article_subtitle %></h2>
+  <div class="snippet">
+    <p class="article_snippets"><%= user.article_snippets %></p>
+  </div>
+  <p class="article_description"><%= user.article_description %></p>
+  <div class="users">
+    <div class="img_container">
+      <img id="profile" src="/images/cont.png" alt="your image" />
+    </div>
+    <div class="userinfo">
+      <h1 class="author_name">
+        Written by
+        <span class="author_name_prefix">@[<%= user.author_name %>]</span>
+      </h1>
+      <h2 class="author_introduction"><%= user.author_introduction %></h2>
+    </div>
+  </div>
+  <div>
+  <a href="/users/<%= user.id %>/updateuserinfo"><button class="btn">Update Info</button></a>
+  <a href="/users/<%= user.id %>/delete"><button class="btn">Delete User</button></a>
+  </div>
+  </div>
+</div>
+
+<% include partials/footer %>

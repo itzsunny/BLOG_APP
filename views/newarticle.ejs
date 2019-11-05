@@ -1,0 +1,59 @@
+<% include partials/header %>
+<div class="wrapper">
+  <form class="form_newuser" action="/users" method="post">
+    <input
+      class="input_value"
+      type="text"
+      name="author_name"
+      placeholder="Your Name"
+    />
+
+    <input
+      class="input_value"
+      type="text"
+      name="author_introduction"
+      placeholder="About You"
+    />
+
+    <input
+      class="input_value"
+      type="text"
+      name="article_title"
+      placeholder="Heading"
+    />
+
+    <textarea
+      class="input_value input_articleintro"
+      name="article_intro"
+      placeholder="About this article"
+      rows="4"
+      cols="50"
+    ></textarea>
+
+    <input
+      class="input_value"
+      type="text"
+      name="article_subtitle"
+      placeholder="Title"
+    />
+    <textarea
+      class="input_value input_snippets"
+      name="article_snippets"
+      placeholder="#code here"
+      rows="5"
+      cols="50"
+    ></textarea>
+
+    <textarea
+      class="input_value input_articledescription"
+      name="article_description"
+      placeholder="Description"
+      rows="10"
+      cols="50"
+    ></textarea>
+    <input type="file" onchange="readURL(this)" />
+    <input type="submit" value="Create" class="submit_newuser btn" />
+  </form>
+</div>
+
+<% include partials/footer %>
