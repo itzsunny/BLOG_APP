@@ -1,0 +1,222 @@
+
+
+
+
+////////////////////////////////////////users page//////////////////////////////////
+
+//header
+
+.main_header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.6rem;
+    background-image: linear-gradient(72deg, #291e95, #cc007a);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .header_logo {
+    width: 2.5%;
+  }
+  .git_logo {
+    width: 100%;
+  }
+  
+  // Articles
+  
+  // all users
+  
+  .list_all {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #333333;
+  }
+  .wrapper {
+    width: 45%;
+    margin: 6rem auto;
+  }
+  .users {
+    display: flex;
+    margin: 1rem;
+  }
+  .img_container {
+    width: 13%;
+    padding: 0.5rem;
+  }
+  .userinfo {
+    padding: 0.5rem;
+  }
+  #profile {
+    width: 100%;
+  }
+  .author_name {
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    color: rgba(0, 0, 0, 0.8);
+  }
+  .author_name_prefix {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000080;
+    background-color: #f4f7f8;
+    padding: 0.3rem 0.5rem;
+    line-height: 1.5rem;
+    border-radius: 0.5rem;
+    transform:rotate(45deg);
+    transform-origin: center;
+    animation: flutter 2s linear infinite;
+  }
+  .author_introduction {
+    font-size: 0.85rem;
+    color: #7d7d7d;
+    line-height: 1.5rem;
+  }
+  // user bar
+  .user_bar {
+    display: flex;
+    padding: 0.9rem;
+    background-color: #f4f7f8;
+    border: 1px solid #ecf0f2;
+    border-left: 5px solid #ecf0f2;
+    border-right: 5px solid #ecf0f2;
+    position: relative;
+  }
+  // comments
+  .comments {
+    width: 3%;
+    .comments_logo {
+      width: 100%;
+      opacity: 0.8;
+    }
+  }
+  .comments_count {
+    padding-right: 1rem;
+  }
+  .comments_count,
+  .likes_count {
+    padding-left: 0.2rem;
+  }
+  .likes {
+    width: 3%;
+    .likes_logo {
+      width: 100%;
+      opacity: 0.8;
+    }
+  }
+  
+  // create article
+  
+  .btn {
+    font-size: 0.8rem;
+    margin: 1rem 0;
+    padding: 0.5rem 1.5rem;
+    border-radius: 1rem;
+  }
+  
+  // form
+  
+  .form_newuser {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .form_input {
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .input_value {
+    border: none;
+    outline: none;
+    font-weight: 200;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.5);
+    padding: 1rem 0;
+  }
+  .input_snippets {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+      monospace;
+    line-height: 2.5;
+    padding: 1.5rem;
+    color: #fff;
+    font-size: 1.5rem;
+    background-color: #212121;
+  }
+  
+  .input_value:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  }
+  
+  .input_value::placeholder {
+    font-weight: 100;
+    color: rgba(105, 27, 27, 0.3);
+  }
+  .input_snippets::placeholder {
+    color: #fff;
+  }
+  .submit_newuser {
+    width: 20%;
+    color: #fff;
+    background: linear-gradient(72deg, #291e95, #cc007a);
+  }
+  
+  // article_info
+  
+  .arrow_articleinfo {
+    position: absolute;
+    right: 1rem;
+    text-decoration: none;
+    transition: all 0.4s;
+  }
+  
+  .user_bar:hover .arrow_articleinfo {
+    transform: scale(1.5);
+  }
+  
+  .article_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+  }
+  
+  .article_title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .article_intro {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.7);
+    line-height: 2;
+  }
+  .article_subtitle {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 0.5rem 0;
+    color: rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .article_snippets {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+      monospace;
+    line-height: 2.5;
+    padding: 1.5rem;
+    color: #fff;
+    font-size: 0.9rem;
+    border-radius: 1rem;
+    background-color: #212121;
+  }
+  .article_description {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.7);
+    line-height: 2;
+  }
+  
