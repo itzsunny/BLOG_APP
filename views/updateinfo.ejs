@@ -1,0 +1,67 @@
+<% include partials/header %>
+
+
+<div class="wrapper">
+  <form class="form_newuser" action="/articles/<%= user.id %>" method="post">
+    <input
+      class="input_value"
+      type="text"
+      name="author_name"
+      placeholder="Your Name"
+      value="<%= user.author_name %>"
+    />
+
+    <input
+      class="input_value"
+      type="text"
+      name="author_introduction"
+      placeholder="About You"
+      value="<%= user.author_introduction %>"
+    />
+
+    <input
+      class="input_value"
+      type="text"
+      name="article_title"
+      placeholder="Heading"
+      value="<%= user.article_title %>"
+    />
+
+    <textarea
+      class="input_value input_articleintro"
+      name="article_intro"
+      placeholder="About this article"
+      rows="4"
+      cols="50"
+    ><%= user.article_intro %></textarea>
+
+    <input
+      class="input_value"
+      type="text"
+      name="article_subtitle"
+      placeholder="Title"
+      value="<%= user.article_subtitle %>"
+    />
+    <textarea
+    class="input_value input_snippets"
+    name="article_snippets"
+    placeholder="# code"
+    rows="5"
+    cols="50"
+
+  ><%= user.article_snippets %></textarea>
+
+    <textarea
+      class="input_value input_articledescription"
+      name="article_description"
+      placeholder="Description"
+      rows="10"
+      cols="50"
+    ><%= user.article_description %></textarea>
+    <input type="file" onchange="readURL(this)" />
+    <input type="submit" value="Update" class="submit_newuser btn trans_btn" />
+  </form>
+</div>
+
+
+<% include partials/footer %>

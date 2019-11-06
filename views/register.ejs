@@ -1,0 +1,47 @@
+<% include partials/header %>
+<div class="wrapper">
+  <form class="form_newuser" action="/articles/register" method="post">
+    <input
+      class="input_value input_register"
+      type="text"
+      name="name"
+      placeholder="Enter Your Name"
+    />
+
+    <input
+      class="input_value input_register"
+      type="text"
+      name="email"
+      placeholder="Enter your Email"
+    />
+
+    <input
+      class="input_value input_register"
+      type="password"
+      name="password"
+      placeholder="Choose a Password"
+    />
+
+    <select class="input_value gender" name="gender">
+      <option selected disabled > Select Gender </option>
+      <option value="male" >Male</option>
+      <option value="female" >Female</option>
+      <option value="others" >Others</option>
+    </select>
+
+    <input
+      class="input_value input_register"
+      type="text"
+      name="phone"
+      placeholder="Phone Number"
+    />
+
+    <input
+      type="submit"
+      value="Register"
+      class="submit_newuser btn trans_btn"
+    />
+  </form>
+</div>
+
+<% include partials/footer %>

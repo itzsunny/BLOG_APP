@@ -9,7 +9,7 @@
     <p class="article_snippets"><%= user.article_snippets %></p>
   </div>
   <p class="article_description"><%= user.article_description %></p>
-  <div class="users">
+  <div class="article">
     <div class="img_container">
       <img id="profile" src="/images/cont.png" alt="your image" />
     </div>
@@ -22,8 +22,8 @@
     </div>
   </div>
   <div>
-  <a href="/users/<%= user.id %>/updateuserinfo"><button class="btn">Update Info</button></a>
-  <a href="/users/<%= user.id %>/delete"><button class="btn">Delete User</button></a>
+  <a href="/articles/<%= user.id %>/updateinfo"><button class="btn trans_btn">Update Info</button></a>
+  <a href="/articles/<%= user.id %>/delete"><button class="btn trans_btn">Delete User</button></a>
   </div>
   </div>
 </div>

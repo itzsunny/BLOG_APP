@@ -1,42 +1,51 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
 
 const userSchema = new Schema(
   {
-    author_name: {
+    name: {
       type: String,
       required: true
     },
-    author_introduction: {
+    email: {
       type: String,
+      required: true,
+      match: /@/
+    },
+    password: {
+      type: String,
+      minlength: 6,
+      maxlength: 18
+    },
+    gender: {
+      type: String,
+      enum: ["male", "female", "others"],
       required: true
     },
-    profile_pic: {
-      type: String
-    },
-    article_title: {
+    phone: {
       type: String,
-      required: true
-    },
-    article_intro: {
-      type: String
-    },
-    article_subtitle: {
-      type: String
-    },
-    article_snippets:{
-      type:String
-    },
-    article_description: {
-      type: String
-    },
-    likes: {
-      type:Number,
-      default:0
+      minlength: 10,
+      maxlength: 10
     }
   },
   { timestamps: true }
 );
 
+userSchema.pre("save", function(next) {
+  console.log(this, "inside pre save hook");
+  if (this.password && this.isModified("password")) {
+    bcrypt.hash(this.password, 01, (err, password) => {
+      err ? next(err) : (this.password = password);
+      next();
+    });
+  } else {
+      next();
+  }
+});
 
-module.exports = mongoose.model("User",userSchema);
+userSchema.methods.verifyPassword = function (password){
+    return bcrypt.compareSync(password,this.password);
+  }
+
+module.exports = mongoose.model("User", userSchema);

@@ -1,0 +1,26 @@
+<% include partials/header %>
+<div class="wrapper">
+  <form class="form_newuser" action="/articles/login" method="post">
+    <input
+      class="input_value input_register"
+      type="text"
+      name="email"
+      placeholder="Enter your Email"
+    />
+
+    <input
+      class="input_value input_register"
+      type="password"
+      name="password"
+      placeholder="Enter Your Password"
+    />
+
+    <input
+      type="submit"
+      value="Login"
+      class="submit_newuser btn trans_btn"
+    />
+  </form>
+</div>
+
+<% include partials/footer %>
