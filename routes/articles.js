@@ -3,6 +3,7 @@ const router = express.Router();
 const Article = require("../models/article");
 const User = require("../models/user");
 const auth = require("../middleware/auth");
+const logged = auth.isLoggedin;
 
 
 
@@ -41,13 +42,13 @@ router.post("/login", (req, res, next) => {
 
 /* GET articles listing. */
 
-router.get("/create", (req, res, next) => {
+router.get("/create",logged,(req, res, next) => {
   res.render("newarticle");
 });
 
-// POST Articles
+// Create Articles
 
-router.post("/", (req, res, next) => {
+router.post("/", logged,(req, res, next) => {
   Article.create(req.body, (err, user) => {
     if (err) return next(err);
     res.redirect("/articles");
@@ -75,7 +76,7 @@ router.get("/:id",(req, res, next) => {
 
 // render updateuserinfo
 
-router.get("/:id/updateinfo", (req, res, next) => {
+router.get("/:id/updateinfo",logged, (req, res, next) => {
   let id = req.params.id;
   Article.findById(id, (err, user) => {
     if (err) return next(err);
@@ -85,7 +86,7 @@ router.get("/:id/updateinfo", (req, res, next) => {
 
 // update and redirect
 
-router.post("/:id", (req, res, next) => {
+router.post("/:id",logged, (req, res, next) => {
   let id = req.params.id;
   Article.findByIdAndUpdate(id, req.body, (err, user) => {
     if (err) return next(err);
@@ -95,7 +96,7 @@ router.post("/:id", (req, res, next) => {
 
 // delete user
 
-router.get("/:id/delete", (req, res, next) => {
+router.get("/:id/delete",logged,(req, res, next) => {
   let id = req.params.id;
   Article.findByIdAndRemove(id, (err, deleted) => {
     if (err) return next(err);

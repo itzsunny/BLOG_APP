@@ -16,7 +16,8 @@ const userSchema = new Schema(
     password: {
       type: String,
       minlength: 6,
-      maxlength: 18
+      maxlength: 18,
+      unique:true
     },
     gender: {
       type: String,
@@ -33,9 +34,8 @@ const userSchema = new Schema(
 );
 
 userSchema.pre("save", function(next) {
-  console.log(this, "inside pre save hook");
   if (this.password && this.isModified("password")) {
-    bcrypt.hash(this.password, 01, (err, password) => {
+    bcrypt.hash(this.password, 10, (err, password) => {
       err ? next(err) : (this.password = password);
       next();
     });

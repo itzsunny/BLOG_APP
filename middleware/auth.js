@@ -1,7 +1,9 @@
+
+
 //  handle Access
-exports.auth = () => { 
-  if (user.session && user.session.userId) {
-    res.redirect(`/articles/${id}`);
+exports.isLoggedin = (req,res,next) => { 
+  if (req.session && req.session.userId) {
+    next()
   } else {
     res.redirect("/articles/login");
   }
