@@ -1,55 +1,24 @@
 const express = require("express");
 const router = express.Router();
 const Article = require("../models/article");
-const User = require("../models/user");
+const Comment = require("../models/comment");
 const auth = require("../middleware/auth");
 const logged = auth.isLoggedin;
 
 
 
-
-// register
-
-router.get("/register", (req, res) => {
-  res.render("register");
-});
-
-router.post("/register", (req, res, next) => {
-  User.create(req.body, (err, user) => {
-    err ? next(err) : res.redirect("/articles/login");
-  });
-});
-
-// get login
-
-router.get("/login", (req, res) => {
-  res.render("login");
-});
-
-// verify login
-
-router.post("/login", (req, res, next) => {
-  let { email, password } = req.body;
-  User.findOne({ email }, (err, user) => {
-    if (err) return next(err);
-    if (!user) return next("enter a valid email ID");
-    if (user.verifyPassword(password)) return res.redirect("/articles/login");
-    // login user by creating a session
-    req.session.userId = user.id;
-    res.redirect("/articles");
-  });
-});
-
 /* GET articles listing. */
 
-router.get("/create",logged,(req, res, next) => {
+router.get("/create", logged, (req, res, next) => {
   res.render("newarticle");
 });
 
 // Create Articles
 
-router.post("/", logged,(req, res, next) => {
-  Article.create(req.body, (err, user) => {
+router.post("/", logged, (req, res, next) => {
+  console.log(req.body);
+  req.body.author = req.user.id;
+  Article.create(req.body, (err, articles) => {
     if (err) return next(err);
     res.redirect("/articles");
   });
@@ -58,37 +27,54 @@ router.post("/", logged,(req, res, next) => {
 // GET all Articles
 
 router.get("/", (req, res, next) => {
-  Article.find({}, (err, user) => {
-    if (err) return next(err);
-    res.render("articles", { user });
+  Article.find({})
+  .populate("author","name email")
+  .exec((err, articles)=> {
+    if(err) return next(err);
+    res.render("articles",{articles})
   });
 });
 
 // single article
 
-router.get("/:id",(req, res, next) => {
-  let id = req.params.id;
-  Article.findById(id, (err, user) => {
-    if (err) return next(err);
-    res.render("article", { user });
-  });
+router.get("/:id", (req, res, next) => {
+  let articleId = req.params.id;
+  // Article.findById(id, (err, article) => {
+  //   if (err) return next(err);
+  //   res.render("article", { article });
+  // });
+  Article
+    .findById(articleId)
+    .populate('author', 'name email')
+    .exec((err, article) => {
+      if (err) return next(err);
+      Comment
+      .find({ articleId })
+      .populate('author', 'name')
+      .exec((err, comments) => {
+        console.log(article, comments);
+        if (err) return next(err);
+        res.render("article", { article, comments });
+
+      })
+    })
 });
 
 // render updateuserinfo
 
-router.get("/:id/updateinfo",logged, (req, res, next) => {
+router.get("/:id/updateinfo", logged, (req, res, next) => {
   let id = req.params.id;
-  Article.findById(id, (err, user) => {
+  Article.findById(id, (err, articles) => {
     if (err) return next(err);
-    res.render("updateinfo", { user });
+    res.render("updateinfo", { articles });
   });
 });
 
 // update and redirect
 
-router.post("/:id",logged, (req, res, next) => {
+router.post("/:id", logged, (req, res, next) => {
   let id = req.params.id;
-  Article.findByIdAndUpdate(id, req.body, (err, user) => {
+  Article.findByIdAndUpdate(id, req.body, (err, articles) => {
     if (err) return next(err);
     res.redirect(`/articles/${id}`);
   });
@@ -96,7 +82,7 @@ router.post("/:id",logged, (req, res, next) => {
 
 // delete user
 
-router.get("/:id/delete",logged,(req, res, next) => {
+router.get("/:id/delete", logged, (req, res, next) => {
   let id = req.params.id;
   Article.findByIdAndRemove(id, (err, deleted) => {
     if (err) return next(err);
@@ -104,5 +90,17 @@ router.get("/:id/delete",logged,(req, res, next) => {
   });
 });
 
+router.post('/:articleId/comments', logged, (req, res, next) => {
+  var articleId = req.params.articleId;
+  req.body.author = req.user.id;
+  req.body.articleId = articleId;
+  console.log(req.body);
+  Comment.create(req.body, (err, createdComment) => {
+    console.log(err, createdComment);
+    if(err) return next(err);
+    res.redirect('/articles/' + articleId);
+  })
+
+})
 
 module.exports = router;

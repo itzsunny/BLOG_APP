@@ -2,7 +2,7 @@
 
 <div class="wrapper">
   <h3 class="list_all">List of Articles</h3>
-  <% user.forEach(user => { %>
+  <% articles.forEach(article => { %>
   <div class="users">
     <div class="img_container">
       <img id="profile" src="/images/cont.png" alt="your image" />
@@ -10,9 +10,9 @@
     <div class="userinfo">
       <h1 class="author_name">
         Written by
-        <span class="author_name_prefix">@[<%= user.author_name %>]</span>
+        <span class="author_name_prefix">@[<%= article.author.name %>]</span>
       </h1>
-      <h2 class="author_introduction"><%= user.author_introduction %></h2>
+      <h2 class="author_introduction"><%= article.author.email %></h2>
     </div>
   </div>
   <div class="user_bar">
@@ -24,15 +24,21 @@
       <div class="likes">
         <img class="likes_logo" src="/images/likes_logo.png" />
       </div>
-      <span class="likes_count"><%= user.likes %></span>
+      <span class="likes_count"><%= article.likes %></span>
+      <h4 class="articles_title"><%= article.article_title %></h4>
     </div>
-    <div class="arrow_container"></div>
-      <a class="arrow_articleinfo" href="/articles/<%= user.id %>">〉〉</a>
-    
+  <div class= "arrow_container_container">
+    <a href="/articles/<%= article.id %>"
+      ><div class="arrow_container"></div
+    ></a>
+</div>
+   <div class="arrow"><a class="arrow_articleinfo" href="/articles/<%= article.id %>"> 〉〉</a></div>
   </div>
 
   <% }) %>
-  <a href="/articles/create"><button class="btn trans_btn">Create Article</button></a>
+  <a href="/articles/create"
+    ><button class="btn trans_btn">Create Article</button></a
+  >
 </div>
 
 <% include partials/footer %>

@@ -3,17 +3,7 @@ const Schema = mongoose.Schema;
 
 const articleSchema = new Schema(
   {
-    author_name: {
-      type: String,
-      required: true
-    },
-    author_introduction: {
-      type: String,
-      required: true
-    },
-    profile_pic: {
-      type: String
-    },
+   
     article_title: {
       type: String,
       required: true
@@ -33,6 +23,11 @@ const articleSchema = new Schema(
     likes: {
       type:Number,
       default:0
+    },
+    author: {
+      type:Schema.Types.ObjectId,
+      required:true,
+      ref:"User"
     }
   },
   { timestamps: true }

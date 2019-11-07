@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const commentSchema = new Schema({
-    comment:{
+    content:{
         type:String,
         required:true
     },
@@ -10,7 +10,12 @@ const commentSchema = new Schema({
         type:Schema.Types.ObjectId,
         required:true,
         ref:'User'
+    },
+    articleId: {
+        type:Schema.Types.ObjectId,
+        required:true,
+        ref:"Article"
     }
 })
 
-module.exports = mongoose.model("Comment",commentSchema);
+module.exports = mongoose.model("Comment", commentSchema);

@@ -199,7 +199,6 @@ header p {
 .icon {
   width: 100%;
   border-bottom-left-radius: 50%;
-  border-bottom-right-radius: 50%;
   border-bottom: 1px solid transparent;
   transition: all 0.3s ease-in-out;
 }
@@ -231,7 +230,6 @@ header p {
   width: 100%;
   background-image: url("/images/blog_bg.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
   display: flex;
@@ -303,6 +301,12 @@ header p {
   width: 100%;
 }
 
+.user_name {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 2.2rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
 .list_all {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 2.5rem;
@@ -331,6 +335,18 @@ header p {
 
 #profile {
   width: 100%;
+}
+
+.articles_title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.8rem;
+  position: relative;
+  font-weight: 400;
+  background-color: white;
+  margin: 0 1rem;
+  padding: 0.2rem 0.5rem;
+  color: #797979;
+  border-radius: 1rem;
 }
 
 .author_name {
@@ -400,13 +416,27 @@ header p {
   opacity: 0.8;
 }
 
+.arrow_container_container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 0.8rem;
+}
+
 .arrow_container {
   padding: 1rem 4.2rem;
-  position: absolute;
   right: 0.6rem;
   top: 0.6rem;
   border-radius: 1rem;
   background-color: rgba(94, 93, 93, 0.1);
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
 }
 
 .arrow_articleinfo {
@@ -465,15 +495,51 @@ header p {
   word-spacing: 0.2rem;
   color: rgba(0, 0, 0, 0.5);
   line-height: 1.2;
-  padding: 1rem 0;
+  padding: 0.8rem 0;
+  margin: 0.5rem 0;
+}
+
+.checkbox_snippets {
+  display: none;
+}
+
+.label_snippet {
+  font-size: 1rem;
+  padding: 0.8rem 0.2rem;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.add_snippet {
+  opacity: 0;
+  font-size: 0.8rem;
+  color: #7d7d7d;
+  transition: opacity 0.7s ease-out;
+}
+
+.label_snippet:hover ~ .add_snippet {
+  opacity: 1;
 }
 
 .input_snippets {
   font-family: "Fira Code", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  line-height: 2.5;
-  padding: 1.5rem;
   color: #fff;
   font-size: 1rem;
+  line-height: 2.5;
+  padding: 1.5rem;
+  background-color: transparent;
+}
+
+.input_snippets_container {
+  max-height: 0;
+  line-height: 2.5;
+  padding: 0 1rem;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.checkbox_snippets:checked ~ .input_snippets_container {
+  max-height: 18rem;
   background-color: #212121;
 }
 
@@ -494,6 +560,63 @@ header p {
   width: 20%;
   color: #fff;
   background: linear-gradient(72deg, #291e95, #cc007a);
+}
+
+.input_articledescription {
+  position: relative;
+}
+
+.comment_container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+.comment_form {
+  padding: 0.5rem;
+}
+
+#comment_box {
+  width: 100%;
+  margin: 0 auto;
+  border: none;
+  padding: 0.5rem;
+  background-color: #F6F8FA;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  outline: none;
+  font-size: 0.8rem;
+}
+
+.comment_button_container {
+  padding: 0;
+  text-align: right;
+}
+
+.comment_button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #69CC57;
+}
+
+.comment_submit {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.user_comments {
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .input_register {

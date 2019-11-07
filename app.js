@@ -6,11 +6,14 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var session = require("express-session");
 var MongoStore = require('connect-mongo')(session);
+var sassMiddleware = require('node-sass-middleware');
+
 
 // routes
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/articles");
+var articlesRouter = require("./routes/articles");
+var usersRouter = require("./routes/users");
 
 
 // connecting to database
@@ -37,6 +40,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use(sassMiddleware({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  indentedSyntax: false, // true = .sass and false = .scss
+  sourceMap: true
+}));
+
 // session
 
 app.use(session({
@@ -46,11 +56,16 @@ app.use(session({
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }))
 
+// logged users
+
+const loggedSession = require("./middleware/auth");
+app.use(loggedSession.loggedSession);
 
 // routes
 
 app.use("/", indexRouter);
-app.use("/articles", usersRouter);
+app.use("/articles", articlesRouter);
+app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> 📰 Articles</title>
+    <title>📰 Articles</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <div class="main_header">
-    <div class="header_logo"><a href="https://github.com/itzsunny"><img class="git_logo" src="/images/github.svg"></a></div>
+    <% if(user){ %>
+    <h4 class="user_name"><%= user.name %></h4>
+    <% } %>
+    <div class="header_logo">
+      <a href="/articles"><img class="git_logo" src="/images/github.svg"/></a>
+    </div>
+
     <div>
-      <a href="/articles/register"><button class="btn trans_btn register">Register</button></a>
-      <a href="/articles/login"><button class="btn trans_btn login">Login</button></a>
+      <% if(user) { %>
+      <a href="/users/logout"
+        ><button class="btn trans_btn login">Logout</button></a
+      >
+      <% } else { %>
+      <a href="/users/register"
+        ><button class="btn trans_btn register">Register</button></a
+      >
+      <a href="/users/login"
+        ><button class="btn trans_btn login">Login</button></a
+      >
+      <% } %>
     </div>
   </div>
-  <body>
-    
+  <body></body>
+</html>

@@ -70,7 +70,6 @@ header {
 .icon {
   width: 100%;
   border-bottom-left-radius: 50%;
-  border-bottom-right-radius: 50%;
   border-bottom: 1px solid transparent;
   transition: all 0.3s ease-in-out;
 }
@@ -101,7 +100,6 @@ header {
   width: 100%;
   background-image: url("/images/blog_bg.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
   display: flex;
