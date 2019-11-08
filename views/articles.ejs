@@ -27,12 +27,14 @@
       <span class="likes_count"><%= article.likes %></span>
       <h4 class="articles_title"><%= article.article_title %></h4>
     </div>
-  <div class= "arrow_container_container">
-    <a href="/articles/<%= article.id %>"
-      ><div class="arrow_container"></div
-    ></a>
-</div>
-   <div class="arrow"><a class="arrow_articleinfo" href="/articles/<%= article.id %>"> 〉〉</a></div>
+    <div class="arrow_container_container">
+      <a href="/articles/<%= article.id %>"
+        ><div class="arrow_container"></div
+      ></a>
+    </div>
+    <div class="arrow">
+      <a class="arrow_articleinfo" href="/articles/<%= article.id %>"> 〉〉</a>
+    </div>
   </div>
 
   <% }) %>

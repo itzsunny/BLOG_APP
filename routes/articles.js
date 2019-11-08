@@ -112,11 +112,27 @@ router.post("/:articleId/comments", logged, (req, res, next) => {
 
 router.get("/:commentId/deletecomment", (req, res, next) => {
   var commentId = req.params.commentId;
-  console.log(commentId,"here");
   Comment.findByIdAndDelete(commentId, (err, commentToDelete) => {
-    console.log(commentToDelete,err)
     if (err) return next(err);
-    res.redirect("/articles");
+    res.redirect(`/articles`);
+  });
+});
+
+// edit comments
+
+router.get("/:commentId/editcomment", (req, res, next) => {
+  let commentId = req.params.commentId;
+  Comment.findById(commentId, (err, comment) => {
+    if (err) return next(err);
+    res.render("comments", { comment });
+  });
+});
+
+router.post("/articles/:articleId", (req, res, next) => {
+  var articleId = req.params.articleId;
+  Comment.findByIdAndUpdate(articleId, (err, commentToUpdate) => {
+    if (err) return next(err);
+    res.redirect(`/articles/${articleId}`);
   });
 });
 
