@@ -9,6 +9,17 @@ function readURL(input) {
     reader.readAsDataURL(input.files[0]);
   }
 }
+var comments = document.querySelector("#view_all_comments");
+var comment = document.querySelector(".view_comments");
+console.log(comment.innerText)
+
+comment.addEventListener("click",()=> {
+  if(comments.checked){
+    comment.innerText = "View all";
+  } else {
+    comment.innerText = "View less";
+  }
+})
 
 // var snippet = document.querySelector(".article_snippets").Value;
 // var snippets = document.querySelector(".snippet");

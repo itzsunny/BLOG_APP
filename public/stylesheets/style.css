@@ -466,7 +466,8 @@ header p {
   box-shadow: 0 4px 6px -6px black;
 }
 
-.register, .login {
+.register,
+.login {
   background-color: rgba(255, 255, 255, 0.3);
   color: #fff;
   border: none;
@@ -566,59 +567,6 @@ header p {
   position: relative;
 }
 
-.comment_container {
-  width: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
-}
-
-.comment_form {
-  padding: 0.5rem;
-}
-
-#comment_box {
-  width: 100%;
-  margin: 0 auto;
-  border: none;
-  padding: 0.5rem;
-  background-color: #F6F8FA;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
-  outline: none;
-  font-size: 0.8rem;
-}
-
-.comment_button_container {
-  padding: 0;
-  text-align: right;
-}
-
-.comment_button {
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  background-color: #69CC57;
-}
-
-.comment_submit {
-  border: none;
-  background: transparent;
-  outline: none;
-  font-size: 0.8rem;
-  color: #fff;
-}
-
-.user_comments {
-  padding: 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-}
-
 .input_register {
   border: 1px solid rgba(131, 131, 131, 0.1);
   border-radius: 1rem;
@@ -673,8 +621,6 @@ header p {
 .snippet {
   padding: 1.5rem;
   background-color: #9eaab4;
-  padding: 1.5rem 0.5rem 0.5rem 0.5rem;
-  border-radius: 0.5rem;
 }
 
 .article_snippets {
@@ -692,6 +638,133 @@ header p {
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.7);
   line-height: 2;
+}
+
+.comment_container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 1rem auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+.comment_form {
+  padding: 0.5rem;
+}
+
+#comment_box {
+  width: 100%;
+  margin: 0 auto;
+  border: none;
+  padding: 0.5rem;
+  background-color: #f6f8fa;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  outline: none;
+  font-size: 0.8rem;
+}
+
+.comment_button_container {
+  padding: 0;
+  text-align: right;
+}
+
+.comment_button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #67b659;
+}
+
+.comment_submit {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.user_comments_box {
+  padding: 1rem;
+  border-radius: 1rem;
+  max-height: 10.5rem;
+  overflow: hidden;
+  background-color: rgba(160, 160, 160, 0.1);
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+  justify-content: space-between;
+  transition: all 0.5s;
+}
+
+.trash_edit {
+  text-align: right;
+  display: flex;
+  align-items: center;
+}
+
+.trash, .edit {
+  width: 50%;
+  opacity: 0.5;
+  transition: all 0.2s ease-in-out;
+}
+
+.edit:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+  box-shadow: 0 4px 10px -5px #3b3b3b;
+}
+
+.trash:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+  box-shadow: 0 4px 10px -5px #3b3b3b;
+}
+
+.view_comments {
+  font-size: 0.8rem;
+  color: #969696;
+}
+
+#view_all_comments {
+  display: none;
+}
+
+#view_all_comments:checked + .user_comments_box {
+  max-height: 1000px;
+}
+
+#profile_comment {
+  width: 8%;
+}
+
+.user_comments {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.comment_user {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0 0.5rem;
+}
+
+.comment {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 100;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.comment_view {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 @keyframes flutter {

@@ -5,8 +5,6 @@ const Comment = require("../models/comment");
 const auth = require("../middleware/auth");
 const logged = auth.isLoggedin;
 
-
-
 /* GET articles listing. */
 
 router.get("/create", logged, (req, res, next) => {
@@ -28,11 +26,11 @@ router.post("/", logged, (req, res, next) => {
 
 router.get("/", (req, res, next) => {
   Article.find({})
-  .populate("author","name email")
-  .exec((err, articles)=> {
-    if(err) return next(err);
-    res.render("articles",{articles})
-  });
+    .populate("author", "name email")
+    .exec((err, articles) => {
+      if (err) return next(err);
+      res.render("articles", { articles });
+    });
 });
 
 // single article
@@ -43,21 +41,28 @@ router.get("/:id", (req, res, next) => {
   //   if (err) return next(err);
   //   res.render("article", { article });
   // });
-  Article
-    .findById(articleId)
-    .populate('author', 'name email')
+  Article.findById(articleId)
+    .populate("author", "name email")
     .exec((err, article) => {
       if (err) return next(err);
-      Comment
-      .find({ articleId })
-      .populate('author', 'name')
-      .exec((err, comments) => {
-        console.log(article, comments);
-        if (err) return next(err);
-        res.render("article", { article, comments });
+      Comment.find({ articleId })
+        .populate("author", "name")
+        .exec((err, comments) => {
+          console.log(article, comments);
+          if (err) return next(err);
+          res.render("article", { article, comments });
+        });
+    });
+});
 
-      })
-    })
+// Edit comments
+
+router.get("/:id/edit", (req, res, next) => {
+  let commentsId = req.params.id;
+  Comment.findById(commentsId, (err, editedComment) => {
+    if (err) return next(err);
+    res.render("editComments", { editedComment });
+  });
 });
 
 // render updateuserinfo
@@ -80,7 +85,7 @@ router.post("/:id", logged, (req, res, next) => {
   });
 });
 
-// delete user
+// delete Article
 
 router.get("/:id/delete", logged, (req, res, next) => {
   let id = req.params.id;
@@ -90,17 +95,29 @@ router.get("/:id/delete", logged, (req, res, next) => {
   });
 });
 
-router.post('/:articleId/comments', logged, (req, res, next) => {
+// create comments
+
+router.post("/:articleId/comments", logged, (req, res, next) => {
   var articleId = req.params.articleId;
   req.body.author = req.user.id;
   req.body.articleId = articleId;
   console.log(req.body);
   Comment.create(req.body, (err, createdComment) => {
-    console.log(err, createdComment);
-    if(err) return next(err);
-    res.redirect('/articles/' + articleId);
-  })
+    if (err) return next(err);
+    res.redirect("/articles/" + articleId);
+  });
+});
 
-})
+// delete comments
+
+router.get("/:commentId/deletecomment", (req, res, next) => {
+  var commentId = req.params.commentId;
+  console.log(commentId,"here");
+  Comment.findByIdAndDelete(commentId, (err, commentToDelete) => {
+    console.log(commentToDelete,err)
+    if (err) return next(err);
+    res.redirect("/articles");
+  });
+});
 
 module.exports = router;

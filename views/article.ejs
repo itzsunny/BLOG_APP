@@ -10,9 +10,7 @@
 
     <h2 class="article_subtitle"><%= article.article_subtitle %></h2>
 
-    <% } %> 
-
-    <% if(article.article_snippets) {%>
+    <% } %> <% if(article.article_snippets) {%>
 
     <div class="snippet">
       <p class="article_snippets"><%= article.article_snippets %></p>
@@ -33,21 +31,35 @@
         <h2 class="author_introduction"><%= article.author.email %></h2>
       </div>
     </div>
-    <div>
-      <a href="/articles/<%= article.id %>/updateinfo"
-        ><button class="btn trans_btn">Update Article</button></a
-      >
-      <a href="/articles/<%= article.id %>/delete"
-        ><button class="btn trans_btn">Delete Article</button></a
-      >
+    <% if(user){ %>
+      <div>
+        <a href="/articles/<%= article.id %>/updateinfo"
+          ><button class="btn trans_btn">Update Article</button></a
+        >
+        <a href="/articles/<%= article.id %>/delete"
+          ><button class="btn trans_btn">Delete Article</button></a
+        >
+      </div>
+   <% } %>
+  </div>
+  <div class="comment_view">
+    <label for="view_all_comments" class="view_comments">View all</label>
+    <input type="checkbox" id="view_all_comments" />
+    <div class="user_comments_box">
+      <% comments.map(comment => { %>
+      <div class="user_comments">
+        <img id="profile_comment" src="/images/cont.png" alt="your image" />
+        <p class="comment_user"><%= comment.author.name %></p>
+        <p class="comment"><%= comment.content %></p>
+      </div>
+      <div class="trash_edit">
+        <a hre= "/articles/<%= comment.id %>/edit"><img class="edit" src="/images/edit.png"/></a>
+        <a href="/articles/<%= comment.id %>/deletecomment"><img class="trash" src="/images/trash.png"/></a>
+      </div>
+      <% }) %>
     </div>
   </div>
-  <div class="user_comments">
-    <% comments.forEach(comment => { %>
-    <p class="comment"><%= comment.content %></p>
-    <p class="comment_user"><%= comment.author.name %></p>
-    <% }) %>
-  </div>
+  <% if(user){ %>
   <div class="comment_container">
     <form
       action="/articles/<%= article.id %>/comments"
@@ -62,10 +74,38 @@
         placeholder="Write your comments"
       ></textarea>
       <div class="comment_button_container">
-      <button class="comment_button"><input type="submit" value="Add Comment" class="comment_submit"/></button>
+        <button class="comment_button">
+          <input type="submit" value="Add Comment" class="comment_submit" />
+        </button>
       </div>
     </form>
   </div>
+  <% } else { %>
+  <div class="comment_container">
+    <form
+      action="/articles/<%= article.id %>/comments"
+      method="post"
+      class="comment_form"
+    >
+      <textarea
+        name="content"
+        id="comment_box"
+        cols="30"
+        rows="10"
+        placeholder="Sign in to comment"
+      ></textarea>
+      <div class="comment_button_container">
+        <button class="comment_button">
+          <input
+            type="submit"
+            value="Sign in to comment"
+            class="comment_submit"
+          />
+        </button>
+      </div>
+    </form>
+  </div>
+  <% } %>
 </div>
 
 <% include partials/footer %>
