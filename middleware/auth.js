@@ -14,7 +14,6 @@ exports.loggedSession = (req,res,next)=> {
   if(req.session && req.session.userId){
       let userId = req.session.userId;
       User.findById(userId, '-password', (err, user)=> {
-        console.log(err, user);
           if(err) return next("invalid userId in schema");
           req.user = user;
           res.locals.user = user;

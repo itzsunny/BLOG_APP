@@ -3,7 +3,32 @@ const router = express.Router();
 const Article = require("../models/article");
 const Comment = require("../models/comment");
 const auth = require("../middleware/auth");
+const path = require("path");
 const logged = auth.isLoggedin;
+
+// const multer = require("multer");
+
+// const storage = multer.diskStorage({
+//   destination: path.join(__dirname, "uploads"),
+//   filename: (req, file, cb) => {
+//     cb(
+//       null,
+//       file,
+//       fieldname + "-" + Date.now() + path.extname(file.originalname)
+//     );
+//   }
+// });
+
+// const upload = multer({
+//   storage: storage
+// }).single("profile");
+
+// router.post("/", logged, (req, res) => {
+//   upload(req, res, err => {
+//     if (err) return next(err);
+//     res.redirect("/articles");
+//   });
+// });
 
 /* GET articles listing. */
 
@@ -14,7 +39,6 @@ router.get("/create", logged, (req, res, next) => {
 // Create Articles
 
 router.post("/", logged, (req, res, next) => {
-  console.log(req.body);
   req.body.author = req.user.id;
   Article.create(req.body, (err, articles) => {
     if (err) return next(err);
@@ -48,7 +72,6 @@ router.get("/:id", (req, res, next) => {
       Comment.find({ articleId })
         .populate("author", "name")
         .exec((err, comments) => {
-          console.log(article, comments);
           if (err) return next(err);
           res.render("article", { article, comments });
         });
@@ -101,7 +124,6 @@ router.post("/:articleId/comments", logged, (req, res, next) => {
   var articleId = req.params.articleId;
   req.body.author = req.user.id;
   req.body.articleId = articleId;
-  console.log(req.body);
   Comment.create(req.body, (err, createdComment) => {
     if (err) return next(err);
     res.redirect("/articles/" + articleId);
@@ -122,18 +144,22 @@ router.get("/:commentId/deletecomment", (req, res, next) => {
 
 router.get("/:commentId/editcomment", (req, res, next) => {
   let commentId = req.params.commentId;
-  Comment.findById(commentId, (err, comment) => {
+  Comment.findById(commentId,(err, comment) => {
     if (err) return next(err);
     res.render("comments", { comment });
   });
 });
 
+// post edited comments
+
 router.post("/articles/:articleId", (req, res, next) => {
   var articleId = req.params.articleId;
-  Comment.findByIdAndUpdate(articleId, (err, commentToUpdate) => {
+  var commentId = req.comment.id;
+  Comment.findByIdAndUpdate(commentId,req.body, (err, commentToUpdate) => {
     if (err) return next(err);
     res.redirect(`/articles/${articleId}`);
   });
 });
+
 
 module.exports = router;

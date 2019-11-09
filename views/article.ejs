@@ -13,7 +13,7 @@
     <% } %> <% if(article.article_snippets) {%>
 
     <div class="snippet">
-      <p class="article_snippets"><%= article.article_snippets %></p>
+      <pre> <code class="language-javaScript"><%= article.article_snippets %></code></pre>
     </div>
 
     <% } %>
@@ -32,31 +32,46 @@
       </div>
     </div>
     <% if(user){ %>
-      <div>
-        <a href="/articles/<%= article.id %>/updateinfo"
-          ><button class="btn trans_btn">Update Article</button></a
-        >
-        <a href="/articles/<%= article.id %>/delete"
-          ><button class="btn trans_btn">Delete Article</button></a
-        >
-      </div>
-   <% } %>
+    <div>
+      <a href="/articles/<%= article.id %>/updateinfo"
+        ><button class="btn trans_btn">Update Article</button></a
+      >
+      <a href="/articles/<%= article.id %>/delete"
+        ><button class="btn trans_btn">Delete Article</button></a
+      >
+    </div>
+    <% } %>
   </div>
   <div class="comment_view">
     <label for="view_all_comments" class="view_comments">View all</label>
     <input type="checkbox" id="view_all_comments" />
     <div class="user_comments_box">
-      <% comments.map(comment => { %>
+      <% comments.forEach(comment => { %>
       <div class="user_comments">
         <img id="profile_comment" src="/images/cont.png" alt="your image" />
         <p class="comment_user"><%= comment.author.name %></p>
         <p class="comment"><%= comment.content %></p>
       </div>
+      <% console.log(comment.id) %>
+      <% if(user.id == comment.author.id || user.id == article.author.id ) { %>
       <div class="trash_edit">
-        <a href= "/articles/<%= comment.id %>/editcomment"><img class="edit" src="/images/edit.png"/></a>
-        <a href="/articles/<%= comment.id %>/deletecomment"><img class="trash" src="/images/trash.png"/></a>
+        <a href="/articles/<%= comment.id %>/editcomment"
+          ><img class="edit" src="/images/edit.png"
+        /></a>
+        <a href="/articles/<%= comment.id %>/deletecomment"
+          ><img class="trash" src="/images/trash.png"
+        /></a>
       </div>
-      <% }) %>
+      <% } else { %>
+      <div class="trash_edit">
+        <a 
+          ><img style="display:none" class="edit" src="/images/edit.png"
+        /></a>
+        <a 
+          ><img style="display:none " class="trash" src="/images/trash.png"
+        /></a>
+      </div>
+      <% } %> <% }) %>
     </div>
   </div>
   <% if(user){ %>

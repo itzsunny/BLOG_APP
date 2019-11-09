@@ -85,9 +85,9 @@
 #view_all_comments {
   display: none;
 }
-#view_all_comments:checked + .user_comments_box {
+#view_all_comments:checked ~ .user_comments_box {
   max-height: 1000px;
-}
+ }
 
 #profile_comment {
   width: 8%;

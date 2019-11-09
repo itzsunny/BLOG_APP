@@ -24,7 +24,6 @@ router.get("/register", (req, res) => {
   
   router.post("/login", (req, res, next) => {
     let { email, password } = req.body;
-    console.log(req.body);
     User.findOne({ email }, (err, user) => {
       if (err) return next(err);
       if (!user) return next("enter a valid email ID");
