@@ -11,7 +11,7 @@ function readURL(input) {
 }
 var comments = document.querySelector("#view_all_comments");
 var comment = document.querySelector(".view_comments");
-console.log(comment.innerText)
+console.log(comments)
 
 comment.addEventListener("click",()=> {
   if(comments.checked){
@@ -20,7 +20,16 @@ comment.addEventListener("click",()=> {
     comment.innerText = "View less";
   }
 })
+var commentBtn = document.getElementById("update_btn");
+console.log(commentBtn)
 
+var snippet = document.querySelector(".label_snippet");
+console.log(snippet)
+
+
+// commentBtn.addEventListener("mouseover",()=> {
+//   commentBtn.style.backgroundColor = "red";
+// })
 // var snippet = document.querySelector(".article_snippets").Value;
 // var snippets = document.querySelector(".snippet");
 // console.log(snippet);

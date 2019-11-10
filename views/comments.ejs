@@ -1,20 +1,24 @@
 <% include partials/header %>
 
 <div class="wrapper">
-  <form class="form_newuser" action="/articles/<%= comment.articleId %>/comments/<%= comment.id %>" method="post">
-    <input
-      class="input_value input_register"
-      type="text"
-      name="content"
-      placeholder="update comment"
-      value="<%= comment.content %>"
-    />
-    <input
-      type="submit"
-      value="update"
-      class="submit_newuser btn trans_btn"
-    />
+  <form class="form_newuser form_update_comments" action="/articles/<%= comment.articleId %>/comments/<%= comment.id %>" method="post">
+    <div class="user_comments ">
+      <img id="profile_comment" src="/images/cont.png" alt="your image" />
+      <p class="comment_user "><%= comment.author.name %></p>
+<input
+    class="comment"
+    type="text"
+    name="content"
+    placeholder="update comment"
+    value="<%= comment.content %>"
+    autofocus
+  />
+  </div>
+  <button type="submit" id="update_btn"><img src="/images/update.png" /></button>
   </form>
 </div>
+</div>
+   
+    
 
 <% include partials/footer %>

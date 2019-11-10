@@ -31,7 +31,8 @@
         <h2 class="author_introduction"><%= article.author.email %></h2>
       </div>
     </div>
-    <% if(user){ %>
+
+    <% if(user && (user.id == article.author.id)){ %>
     <div>
       <a href="/articles/<%= article.id %>/updateinfo"
         ><button class="btn trans_btn">Update Article</button></a
@@ -46,7 +47,9 @@
     <label for="view_all_comments" class="view_comments">View all</label>
     <input type="checkbox" id="view_all_comments" />
     <div class="user_comments_box">
+     
       <% comments.forEach(comment => { %>
+      
       <div class="user_comments">
         <img id="profile_comment" src="/images/cont.png" alt="your image" />
         <p class="comment_user"><%= comment.author.name %></p>
@@ -55,10 +58,10 @@
       <% if(user && (user.id == comment.author.id || user.id ==
       article.author.id) ) { %>
       <div class="trash_edit">
-        <a href="/articles/<%= comment.id %>/editcomment"
+        <a href="/<%= comment.articleId %>/comments/<%= comment.id %>/editcomment"
           ><img class="edit" src="/images/edit.png"
         /></a>
-        <a href="/articles/<%= comment.id %>/deletecomment"
+        <a href="/<%= comment.articleId %>/comments/<%= comment.id %>/deletecomment"
           ><img class="trash" src="/images/trash.png"
         /></a>
       </div>

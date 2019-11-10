@@ -109,6 +109,9 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 0.9rem;
   font-weight: 100;
+  border: none;
+  background: transparent;
+  outline: none;
   color: rgba(0, 0, 0, 0.6);
 }
 
@@ -116,4 +119,28 @@
 .comment_view {
 display: flex;
 flex-direction: column-reverse;
+}
+
+// update comments
+
+.form_update_comments{
+  display: flex;
+  justify-content: space-between;
+  border-radius: 1rem;
+  background-color: rgba(160, 160, 160, 0.1);
+}
+#update_btn {
+  width:10%;
+  padding:.1rem .2rem;
+  border-radius: 50%;
+  background: transparent;
+  margin: 1rem;
+  outline: none;
+  img {
+    width: 100%;
+    
+  }
+}
+.btn_rotate {
+  transform: rotate(360deg);
 }

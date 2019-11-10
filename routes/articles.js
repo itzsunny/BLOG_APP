@@ -68,12 +68,10 @@ router.get("/:id", (req, res, next) => {
   Article.findById(articleId)
     .populate("author", "name email")
     .exec((err, article) => {
-      // console.log(article);
       if (err) return next(err);
       Comment.find({ articleId })
         .populate("author", "name")
         .exec((err, comments) => {
-          console.log(comments);
           if (err) return next(err);
           res.render("article", { article, comments });
         });
@@ -112,11 +110,11 @@ router.post("/:id", logged, (req, res, next) => {
 
 // delete Article
 
-router.get("/:id/delete", logged, (req, res, next) => {
-  let id = req.params.id;
-  Article.findByIdAndRemove(id, (err, deleted) => {
+router.get("/:articleId/delete", logged, (req, res, next) => {
+  let articleId = req.params.articleId;
+  Article.findByIdAndRemove(articleId, (err, articleToDelete) => {
     if (err) return next(err);
-    res.redirect("/articles");
+    res.redirect(`/articles`);
   });
 });
 
@@ -126,7 +124,8 @@ router.post("/:articleId/comments", logged, (req, res, next) => {
   var articleId = req.params.articleId;
   req.body.author = req.user.id;
   req.body.articleId = articleId;
-  Comment.create(req.body, (err, createdComment) => {
+
+  Comment.create(req.body, (err, commentToCreate) => {
     if (err) return next(err);
     res.redirect("/articles/" + articleId);
   });
@@ -134,18 +133,20 @@ router.post("/:articleId/comments", logged, (req, res, next) => {
 
 // delete comments
 
-router.get("/:commentId/deletecomment", (req, res, next) => {
-  var commentId = req.params.commentId;
+router.get("/:articleid/comments/:commentid/deletecomment", (req, res, next) => {
+  var commentId = req.params.commentid;
+  var articleId = req.params.articleid;
+  console.log(articleId);
   Comment.findByIdAndDelete(commentId, (err, commentToDelete) => {
     if (err) return next(err);
-    res.redirect(`/articles`);
+    res.redirect(`/articles/${articleId}`);
   });
 });
 
 // edit comments
 
-router.get("/:commentId/editcomment", (req, res, next) => {
-  let commentId = req.params.commentId;
+router.get("/:articleid/comments/:commentid/editcomment", (req, res, next) => {
+  let commentId = req.params.commentid;
   Comment.findById(commentId,(err, comment) => {
     if (err) return next(err);
     res.render("comments", { comment });
@@ -154,10 +155,9 @@ router.get("/:commentId/editcomment", (req, res, next) => {
 
 // post edited comments
 
-router.post("/:articleId/comments/:commentId", (req, res, next) => {
-  console.log(req.body);
-  var articleId = req.params.articleId;
-  var commentId = req.params.commentId;
+router.post("/:articleid/comments/:commentid", (req, res, next) => {
+  var articleId = req.params.articleid;
+  var commentId = req.params.commentid;
   Comment.findByIdAndUpdate(commentId,req.body, (err, commentToUpdate) => {
     if (err) return next(err);
     res.redirect(`/articles/${articleId}`);
