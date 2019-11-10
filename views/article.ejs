@@ -52,8 +52,8 @@
         <p class="comment_user"><%= comment.author.name %></p>
         <p class="comment"><%= comment.content %></p>
       </div>
-      <% console.log(comment.id) %>
-      <% if(user.id == comment.author.id || user.id == article.author.id ) { %>
+      <% if(user && (user.id == comment.author.id || user.id ==
+      article.author.id) ) { %>
       <div class="trash_edit">
         <a href="/articles/<%= comment.id %>/editcomment"
           ><img class="edit" src="/images/edit.png"
@@ -64,10 +64,8 @@
       </div>
       <% } else { %>
       <div class="trash_edit">
-        <a 
-          ><img style="display:none" class="edit" src="/images/edit.png"
-        /></a>
-        <a 
+        <a><img style="display:none" class="edit" src="/images/edit.png"/></a>
+        <a
           ><img style="display:none " class="trash" src="/images/trash.png"
         /></a>
       </div>

@@ -68,10 +68,12 @@ router.get("/:id", (req, res, next) => {
   Article.findById(articleId)
     .populate("author", "name email")
     .exec((err, article) => {
+      // console.log(article);
       if (err) return next(err);
       Comment.find({ articleId })
         .populate("author", "name")
         .exec((err, comments) => {
+          console.log(comments);
           if (err) return next(err);
           res.render("article", { article, comments });
         });
@@ -152,9 +154,10 @@ router.get("/:commentId/editcomment", (req, res, next) => {
 
 // post edited comments
 
-router.post("/articles/:articleId", (req, res, next) => {
+router.post("/:articleId/comments/:commentId", (req, res, next) => {
+  console.log(req.body);
   var articleId = req.params.articleId;
-  var commentId = req.comment.id;
+  var commentId = req.params.commentId;
   Comment.findByIdAndUpdate(commentId,req.body, (err, commentToUpdate) => {
     if (err) return next(err);
     res.redirect(`/articles/${articleId}`);

@@ -1,4 +1,1 @@
-app.js
-index.js
-users.js
-articles.js
+web: node ./bin/www
