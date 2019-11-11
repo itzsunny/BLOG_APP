@@ -97,7 +97,7 @@ router.post("/:articleid", logged, (req, res, next) => {
   let articleId = req.params.articleid;
   Article.findByIdAndUpdate(articleId, req.body, (err, articles) => {
     if (err) return next(err);
-    res.redirect(`/articles/${id}`);
+    res.redirect(`/articles/${articleId}`);
   });
 });
 
@@ -122,7 +122,7 @@ router.post("/:articleid/comments", logged, (req, res, next) => {
 
   Comment.create(req.body, (err, commentToCreate) => {
     if (err) return next(err);
-    res.redirect("/articles/" + articleId);
+    res.redirect(`/articles/${articleId}`);
   });
 });
 

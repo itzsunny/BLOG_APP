@@ -25,20 +25,20 @@ if(comment) {
   });
 }
 
-var commentBtn = document.querySelector("#update_btn");
-console.log(commentBtn)
+
 
 var snippet = document.querySelector(".label_snippet");
-console.log(snippet)
 
 if(snippet){
   snippet.addEventListener("click",()=> {
-    snippet.style.backgroundColor = "red";
+    snippet.classList.add("transition");
   })
 }
+var commentBtn = document.querySelector("#update_btn");
+
 if(commentBtn){
   commentBtn.addEventListener("click",()=> {
-    commentBtn.style.transform = "rotate(360deg)";
+    commentBtn.classList.add("transition");
 })
 }
 

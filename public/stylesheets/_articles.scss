@@ -37,8 +37,9 @@
   color: #333333;
 }
 .wrapper {
-  width: 45%;
+  width: 50%;
   margin: 6rem auto;
+  position: relative;
 }
 .users {
   display: flex;
@@ -79,7 +80,6 @@
   padding: 0.3rem 0.5rem;
   line-height: 1.5rem;
   border-radius: 0.5rem;
-  transform: rotate(45deg);
   transform-origin: center;
   animation: flutter 2s linear infinite;
 }
@@ -226,6 +226,10 @@
 .label_snippet:hover ~ .add_snippet {
   opacity: 1;
 }
+textarea {
+  overflow: hidden;
+  resize: vertical;
+}
 .input_snippets {
   font-family: "Fira Code", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
     monospace;
@@ -233,6 +237,7 @@
   font-size: 1rem;
   line-height: 2.5;
   padding: 1.5rem;
+  width:100%;
   background-color: transparent;
 }
 .input_snippets_container {
@@ -316,23 +321,7 @@
   color: rgba(0, 0, 0, 0.8);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-.snippet {
-  padding: 1.5rem;
-  background-color: #9eaab4;
-  // padding: 1.5rem 0.5rem 0.5rem 0.5rem;
-  // border-radius: 0.5rem;
-}
-.article_snippets {
-  font-family: "Fira Code", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
-    monospace;
-  line-height: 2.5;
-  border-radius: 10px;
-  padding: 1.5rem;
-  color: #fff;
-  font-size: 0.9rem;
-  background-color: #212121;
-  box-shadow: -4px 8px 10px -7px black;
-}
+
 .article_description {
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.7);

@@ -1,10 +1,10 @@
 <% include partials/header %>
 
-<div class="wrapper">
+<section class="wrapper">
   <div class="article_container">
     <h1 class="article_title "><%= article.article_title %></h1>
 
-    <p class="article_intro "><%= article.article_intro %></p>
+    <article class="article_intro "><%- article.article_intro %></article>
 
     <% if(article.article_subtitle) { %>
 
@@ -12,13 +12,11 @@
 
     <% } %> <% if(article.article_snippets) {%>
 
-    <div class="snippet">
       <pre> <code class="language-javaScript"><%= article.article_snippets %></code></pre>
-    </div>
 
     <% } %>
 
-    <p class="article_description"><%= article.article_description %></p>
+    <article class="article_description"><%- article.article_description %></article>
     <div class="article">
       <div class="img_container">
         <img id="profile" src="/images/cont.png" alt="your image" />
@@ -43,6 +41,7 @@
     </div>
     <% } %>
   </div>
+  
   <div class="comment_view">
     <label for="view_all_comments" class="view_comments">View all</label>
     <input type="checkbox" id="view_all_comments" />
@@ -75,6 +74,7 @@
       <% } %> <% }) %>
     </div>
   </div>
+ 
   <% if(user){ %>
   <div class="comment_container">
     <form
@@ -122,6 +122,6 @@
     </form>
   </div>
   <% } %>
-</div>
+</section>
 
 <% include partials/footer %>

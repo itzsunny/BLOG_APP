@@ -19,7 +19,8 @@ var usersRouter = require("./routes/users");
 // connecting to database
 
 mongoose.connect(
-  "mongodb://sunny:sunny007@ds263307.mlab.com:63307/articles",
+  "mongodb://sunny:sunny007@ds263307.mlab.com:63307/articles" || "mongodb://localhost/articles",
+  {useNewUrlParser: true, useUnifiedTopology: true }, 
   err => {
     console.log("Connected", err ? err : true);
   }

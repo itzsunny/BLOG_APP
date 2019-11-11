@@ -315,8 +315,9 @@ header p {
 }
 
 .wrapper {
-  width: 45%;
+  width: 50%;
   margin: 6rem auto;
+  position: relative;
 }
 
 .users {
@@ -363,7 +364,6 @@ header p {
   padding: 0.3rem 0.5rem;
   line-height: 1.5rem;
   border-radius: 0.5rem;
-  transform: rotate(45deg);
   transform-origin: center;
   animation: flutter 2s linear infinite;
 }
@@ -524,12 +524,18 @@ header p {
   opacity: 1;
 }
 
+textarea {
+  overflow: hidden;
+  resize: vertical;
+}
+
 .input_snippets {
   font-family: "Fira Code", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   color: #fff;
   font-size: 1rem;
   line-height: 2.5;
   padding: 1.5rem;
+  width: 100%;
   background-color: transparent;
 }
 
@@ -632,7 +638,9 @@ header p {
   color: #fff;
   font-size: 0.9rem;
   background-color: #212121;
-  box-shadow: -4px 8px 10px -7px black;
+  -webkit-box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.75);
 }
 
 .article_description {
@@ -794,6 +802,11 @@ header p {
   transform: rotate(360deg);
 }
 
+.transition {
+  transform: rotate(360deg);
+  background-color: #eb6b6b;
+}
+
 @keyframes flutter {
   25% {
     margin-left: 1rem;
@@ -824,11 +837,6 @@ header p {
   100% {
     margin-right: 0;
     color: white;
-  }
-}
-@media all and (max-width: 768px) {
-  .wrapper {
-    width: 80%;
   }
 }
 
