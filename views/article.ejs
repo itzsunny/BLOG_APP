@@ -58,10 +58,10 @@
       <% if(user && (user.id == comment.author.id || user.id ==
       article.author.id) ) { %>
       <div class="trash_edit">
-        <a href="/<%= comment.articleId %>/comments/<%= comment.id %>/editcomment"
+        <a href="/articles/<%= comment.articleId %>/comments/<%= comment.id %>/editcomment"
           ><img class="edit" src="/images/edit.png"
         /></a>
-        <a href="/<%= comment.articleId %>/comments/<%= comment.id %>/deletecomment"
+        <a href="/articles/<%= comment.articleId %>/comments/<%= comment.id %>/deletecomment"
           ><img class="trash" src="/images/trash.png"
         /></a>
       </div>
