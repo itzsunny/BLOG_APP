@@ -19,11 +19,9 @@ var usersRouter = require("./routes/users");
 // connecting to database
 
 mongoose.connect(
-  ("mongodb://sunnychoudhury:sunnychoudhury@007@ds263307.mlab.com:63307/articles"
-  || "mongodb://localhost/articles"),
-  { useNewUrlParser: true, useUnifiedTopology: true  },
+  "mongodb://sunny:sunny007@ds263307.mlab.com:63307/articles",
   err => {
-    console.log("Connected", err ? false : true);
+    console.log("Connected", err ? err : true);
   }
 );
 
@@ -67,6 +65,7 @@ app.use(loggedSession.loggedSession);
 app.use("/", indexRouter);
 app.use("/articles", articlesRouter);
 app.use("/users", usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

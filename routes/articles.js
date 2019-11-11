@@ -6,6 +6,8 @@ const auth = require("../middleware/auth");
 const path = require("path");
 const logged = auth.isLoggedin;
 
+// multer middleware
+
 // const multer = require("multer");
 
 // const storage = multer.diskStorage({
@@ -59,8 +61,8 @@ router.get("/", (req, res, next) => {
 
 // single article
 
-router.get("/:id", (req, res, next) => {
-  let articleId = req.params.id;
+router.get("/:articleid", (req, res, next) => {
+  let articleId = req.params.articleid;
   // Article.findById(id, (err, article) => {
   //   if (err) return next(err);
   //   res.render("article", { article });
@@ -78,21 +80,12 @@ router.get("/:id", (req, res, next) => {
     });
 });
 
-// Edit comments
-
-router.get("/:id/edit", (req, res, next) => {
-  let commentsId = req.params.id;
-  Comment.findById(commentsId, (err, editedComment) => {
-    if (err) return next(err);
-    res.render("editComments", { editedComment });
-  });
-});
 
 // render updateuserinfo
 
-router.get("/:id/updateinfo", logged, (req, res, next) => {
-  let id = req.params.id;
-  Article.findById(id, (err, articles) => {
+router.get("/:articleid/updateinfo", logged, (req, res, next) => {
+  let articleId = req.params.articleid;
+  Article.findById(articleId, (err, articles) => {
     if (err) return next(err);
     res.render("updateinfo", { articles });
   });
@@ -100,9 +93,9 @@ router.get("/:id/updateinfo", logged, (req, res, next) => {
 
 // update and redirect
 
-router.post("/:id", logged, (req, res, next) => {
-  let id = req.params.id;
-  Article.findByIdAndUpdate(id, req.body, (err, articles) => {
+router.post("/:articleid", logged, (req, res, next) => {
+  let articleId = req.params.articleid;
+  Article.findByIdAndUpdate(articleId, req.body, (err, articles) => {
     if (err) return next(err);
     res.redirect(`/articles/${id}`);
   });
@@ -110,20 +103,22 @@ router.post("/:id", logged, (req, res, next) => {
 
 // delete Article
 
-router.get("/:articleId/delete", logged, (req, res, next) => {
-  let articleId = req.params.articleId;
+router.get("/:articleid/delete", logged, (req, res, next) => {
+  let articleId = req.params.articleid;
   Article.findByIdAndRemove(articleId, (err, articleToDelete) => {
     if (err) return next(err);
     res.redirect(`/articles`);
   });
 });
 
+
 // create comments
 
-router.post("/:articleId/comments", logged, (req, res, next) => {
-  var articleId = req.params.articleId;
+router.post("/:articleid/comments", logged, (req, res, next) => {
+  var articleId = req.params.articleid;
   req.body.author = req.user.id;
   req.body.articleId = articleId;
+  console.log(articleId);
 
   Comment.create(req.body, (err, commentToCreate) => {
     if (err) return next(err);
@@ -163,6 +158,7 @@ router.post("/:articleid/comments/:commentid", (req, res, next) => {
     res.redirect(`/articles/${articleId}`);
   });
 });
+
 
 
 module.exports = router;
