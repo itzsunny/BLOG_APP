@@ -30,11 +30,6 @@ const userSchema = new Schema(
       minlength: 10,
       maxlength: 10
     }
-    // articles: [{
-    //   type: Schema.Types.ObjectId,
-    //   ref: 'Article'
-    // }]
-
   },
   { timestamps: true }
 );
