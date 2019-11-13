@@ -386,13 +386,13 @@ header p {
 }
 
 .user_bar_details {
-  width: 50%;
+  width: 80%;
   display: flex;
   align-items: center;
 }
 
 .comments {
-  width: 6%;
+  width: 3.5%;
 }
 .comments .comments_logo {
   width: 100%;
@@ -409,7 +409,7 @@ header p {
 }
 
 .likes {
-  width: 6%;
+  width: 3.5%;
 }
 .likes .likes_logo {
   width: 100%;
