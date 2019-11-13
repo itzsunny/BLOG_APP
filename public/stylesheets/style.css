@@ -757,6 +757,10 @@ textarea {
   color: rgba(0, 0, 0, 0.6);
 }
 
+.edit_comment {
+  width: 100%;
+}
+
 .comment_view {
   display: flex;
   flex-direction: column-reverse;
