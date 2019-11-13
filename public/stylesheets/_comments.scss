@@ -55,18 +55,21 @@
   display: grid;
   grid-template-columns: 8fr 1fr;
   justify-content: space-between;
+  direction: inherit;
   transition: all .5s;
 }
 .trash_edit {
     text-align: right;
     display: flex;
     align-items: center;
+    
 }
 // images
 .trash,.edit {
     width: 50%;
     opacity: .5;
     transition:all .2s ease-in-out;
+    
 }
 .edit:hover {
     transform: scale(1.2);
@@ -92,10 +95,12 @@
 #profile_comment {
   width: 8%;
 }
+
 .user_comments {
   padding: 1rem;
   display: flex;
   align-items: center;
+  
 }
 .comment_user {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,

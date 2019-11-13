@@ -695,6 +695,7 @@ textarea {
   display: grid;
   grid-template-columns: 8fr 1fr;
   justify-content: space-between;
+  direction: inherit;
   transition: all 0.5s;
 }
 
@@ -838,6 +839,10 @@ textarea {
 
   body {
     padding: 5rem 0;
+  }
+
+  .icon_container {
+    width: 45%;
   }
 
   .main_header {

@@ -46,7 +46,7 @@
     <label for="view_all_comments" class="view_comments">View all</label>
     <input type="checkbox" id="view_all_comments" />
     <div class="user_comments_box">
-     
+      
       <% comments.forEach(comment => { %>
       
       <div class="user_comments">
@@ -71,7 +71,10 @@
           ><img style="display:none " class="trash" src="/images/trash.png"
         /></a>
       </div>
-      <% } %> <% }) %>
+      <% } %>
+    
+     <% }) %>
+      
     </div>
   </div>
  
