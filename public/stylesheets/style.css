@@ -625,24 +625,6 @@ textarea {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.snippet {
-  padding: 1.5rem;
-  background-color: #9eaab4;
-}
-
-.article_snippets {
-  font-family: "Fira Code", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  line-height: 2.5;
-  border-radius: 10px;
-  padding: 1.5rem;
-  color: #fff;
-  font-size: 0.9rem;
-  background-color: #212121;
-  -webkit-box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 10px 10px 21px 0px rgba(0, 0, 0, 0.75);
-}
-
 .article_description {
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.7);
@@ -837,6 +819,15 @@ textarea {
   100% {
     margin-right: 0;
     color: white;
+  }
+}
+@media all and (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+
+  .wrapper {
+    width: 95%;
   }
 }
 
