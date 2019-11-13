@@ -447,7 +447,7 @@ header p {
 .arrow_articleinfo {
   text-decoration: none;
   transition: all 0.4s;
-  color: #ffffff;
+  color: #c5c4c4;
 }
 
 .user_bar:hover .arrow_articleinfo {
@@ -646,7 +646,6 @@ textarea {
   margin: 1rem auto;
   display: grid;
   grid-template-columns: 1fr;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
 }
 
@@ -892,7 +891,9 @@ textarea {
   }
 
   .user_comments_box {
-    max-height: 9rem;
+    max-height: 7.8rem;
+    margin: 1rem 0;
+    padding: 0;
   }
 
   .trash, .edit {
