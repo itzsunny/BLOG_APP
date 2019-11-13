@@ -10,7 +10,7 @@
   </head>
   <div class="main_header">
     <% if(user){ %>
-    <h4 class="user_name"><%= user.name %></h4>
+    <h4 class="user_name"><a class="user_name_header" href="/articles"><%= user.name %></a></h4>
     <% } %>
     <div class="header_logo">
       <a href="/articles"><img class="git_logo" src="/images/github.svg"/></a>
