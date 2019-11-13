@@ -38,6 +38,34 @@
   body {
     padding:5rem 0;
   }
+  .main_header {
+    padding: 0 1rem;
+  }
+  .git_logo{
+    display: none;
+  }
+  .img_container{
+    width: 18%;
+  }
+  .user_bar_details {
+    width:80%;
+  }
+  .comments,.likes {
+    width:6%;
+  }
+  .comments_count,.likes_count {
+    font-size: 1rem;
+  }
+  .user_bar:hover .arrow_articleinfo {
+    animation: none;
+  }
+  .arrow_container {
+    padding: 1rem 2rem;
+    right: 0.6rem;
+    top: 0.6rem;
+    border-radius: 1rem;
+    background-color: rgba(94, 93, 93, 0.1);
+  }
   .wrapper {
     width: 100%;
     margin: 0;
@@ -45,5 +73,11 @@
   }
   .author_name_prefix {
     animation: none;
+  }
+  .user_comments_box{
+    max-height: 9rem;
+  }
+  .trash,.edit {
+    width:70%;
   }
 }

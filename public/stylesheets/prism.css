@@ -131,3 +131,8 @@ box-shadow: 9px 11px 36px -4px rgba(0,0,0,0.75);
 	color: green;
 }
 
+@media all and (max-width:768px){
+	pre[class*="language-"] {
+	width: 100%;
+	}
+}
