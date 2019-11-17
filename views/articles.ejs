@@ -13,7 +13,7 @@
         Written by
         <span class="author_name_prefix darkmode_prefix">@[<%= article.author.name %>]</span>
       </h1>
-      <h2 class="author_introduction darkmode_prefix"><%= article.author.email %></h2>
+      <h2 class="author_introduction darkmode_prefix"><%= article.createdAt.toDateString() %></h2>
     </div>
   </div>
   <div class="user_bar darkmode_bar">

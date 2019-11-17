@@ -1,23 +1,30 @@
 <% include partials/header %>
-
+<% console.log(comments) %>
 <section class="wrapper">
   <% include partials/darkmode %>
   <div class="article_container">
-    <h1 class="article_title darkmode_title_article"><%= article.article_title %></h1>
-
-    <article class="article_intro darkmode_title "><%- article.article_intro %></article>
+    <h1 class="article_title darkmode_title_article">
+      <%= article.article_title %>
+    </h1>
+    <article class="article_intro darkmode_title ">
+      <%- article.article_intro %>
+    </article>
 
     <% if(article.article_subtitle) { %>
 
-    <h2 class="article_subtitle darkmode_title_article "><%= article.article_subtitle %></h2>
+    <h2 class="article_subtitle darkmode_title_article ">
+      <%= article.article_subtitle %>
+    </h2>
 
     <% } %> <% if(article.article_snippets) {%>
 
-      <pre> <code class="language-javaScript"><%= article.article_snippets %></code></pre>
+    <pre> <code class="language-javaScript"><%= article.article_snippets %></code></pre>
 
     <% } %>
 
-    <article class="article_description darkmode_title"><%- article.article_description %></article>
+    <article class="article_description darkmode_title">
+      <%- article.article_description %>
+    </article>
     <div class="article">
       <div class="img_container">
         <img id="profile" src="/images/cont.png" alt="your image" />
@@ -25,9 +32,13 @@
       <div class="userinfo">
         <h1 class="author_name darkmode_title">
           Written by
-          <span class="author_name_prefix darkmode_prefix">@[<%= article.author.name %>]</span>
+          <span class="author_name_prefix darkmode_prefix"
+            >@[<%= article.author.name %>]</span
+          >
         </h1>
-        <h2 class="author_introduction darkmode_prefix"><%= article.author.email %></h2>
+        <h2 class="author_introduction darkmode_prefix">
+          <%= article.author.email %>
+        </h2>
       </div>
     </div>
 
@@ -42,44 +53,52 @@
     </div>
     <% } %>
   </div>
-  
+
   <div class="comment_view">
     <label for="view_all_comments" class="view_comments">View all</label>
     <input type="checkbox" id="view_all_comments" />
     <div class="user_comments_box">
-      
       <% comments.forEach(comment => { %>
       <div class="user_comments_container">
-      <div class="user_comments">
-        <img id="profile_comment" src="/images/cont.png" alt="your image" />
-        <p class="comment_user darkmode_title"><%= comment.author.name %></p>
-        <p class="comment darkmode_title"><%= comment.content %></p>
+        <div class="user_comments">
+          <img id="profile_comment" src="/images/cont.png" alt="your image" />
+          <div class="comment_time_user">
+            <div class="time_container">
+              <p class="comment_user darkmode_title">
+                <%= comment.author.name %>
+              </p>
+              <span class="time"><%= comment.createdAt.toString().slice(0,21) %></span>
+            </div>
+
+            <p class="comment darkmode_title"><%= comment.content %></p>
+          </div>
+        </div>
+        <% if(user && (user.id == comment.author.id || user.id ==
+        article.author.id) ) { %>
+        <div class="trash_edit">
+          <a
+            href="/articles/<%= comment.articleId %>/comments/<%= comment.id %>/editcomment"
+            ><img class="edit" src="/images/edit.png"
+          /></a>
+          <a
+            href="/articles/<%= comment.articleId %>/comments/<%= comment.id %>/deletecomment"
+            ><img class="trash" src="/images/trash.png"
+          /></a>
+        </div>
+        <% } else { %>
+        <div class="trash_edit">
+          <a><img style="display:none" class="edit" src="/images/edit.png"/></a>
+          <a
+            ><img style="display:none " class="trash" src="/images/trash.png"
+          /></a>
+        </div>
+        <% } %>
       </div>
-      <% if(user && (user.id == comment.author.id || user.id ==
-      article.author.id) ) { %>
-      <div class="trash_edit">
-        <a href="/articles/<%= comment.articleId %>/comments/<%= comment.id %>/editcomment"
-          ><img class="edit" src="/images/edit.png"
-        /></a>
-        <a href="/articles/<%= comment.articleId %>/comments/<%= comment.id %>/deletecomment"
-          ><img class="trash" src="/images/trash.png"
-        /></a>
-      </div>
-      <% } else { %>
-      <div class="trash_edit">
-        <a><img style="display:none" class="edit" src="/images/edit.png"/></a>
-        <a
-          ><img style="display:none " class="trash" src="/images/trash.png"
-        /></a>
-      </div>
-      <% } %>
-      </div>
-    
-     <% }) %>
-      
+
+      <% }) %>
     </div>
   </div>
- 
+
   <% if(user){ %>
   <div class="comment_container">
     <form
