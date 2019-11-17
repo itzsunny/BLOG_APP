@@ -1,31 +1,32 @@
 <% include partials/header %>
 
 <div class="wrapper">
-  <h3 class="list_all">List of Articles</h3>
+  <% include partials/darkmode %>
+  <h3 class="list_all darkmode_title">List of Articles</h3>
   <% articles.forEach(article => { %>
   <div class="users">
     <div class="img_container">
       <img id="profile" name = "profile" src="/images/cont.png" alt="your image" />
     </div>
     <div class="userinfo">
-      <h1 class="author_name">
+      <h1 class="author_name darkmode_title">
         Written by
-        <span class="author_name_prefix">@[<%= article.author.name %>]</span>
+        <span class="author_name_prefix darkmode_prefix">@[<%= article.author.name %>]</span>
       </h1>
-      <h2 class="author_introduction"><%= article.author.email %></h2>
+      <h2 class="author_introduction darkmode_prefix"><%= article.author.email %></h2>
     </div>
   </div>
-  <div class="user_bar">
+  <div class="user_bar darkmode_bar">
     <div class="user_bar_details">
       <div class="comments">
         <img class="comments_logo" src="/images/comments_logo.png" />
       </div>
-      <span class="comments_count">0</span>
+      <span class="comments_count darkmode_title">0</span>
       <div class="likes">
         <img class="likes_logo" src="/images/likes_logo.png" />
       </div>
-      <span class="likes_count"><%= article.likes %></span>
-      <h4 class="articles_title"><%= article.article_title %></h4>
+      <span class="likes_count darkmode_title"><%= article.likes %></span>
+      <h4 class="articles_title darkmode_title"><%= article.article_title %></h4>
     </div>
     <div class="arrow_container_container">
       <a href="/articles/<%= article.id %>"
@@ -33,13 +34,13 @@
       ></a>
     </div>
     <div class="arrow">
-      <a class="arrow_articleinfo" href="/articles/<%= article.id %>"> 〉〉</a>
+      <a class="arrow_articleinfo darkmode_title" href="/articles/<%= article.id %>"> 〉〉</a>
     </div>
   </div>
 
   <% }) %>
   <a href="/articles/create"
-    ><button class="btn trans_btn">Create Article</button></a
+    ><button class="btn trans_btn darkmode_btn">Create Article</button></a
   >
 </div>
 

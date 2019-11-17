@@ -1,0 +1,66 @@
+
+// darkmode 
+
+#darkmode {
+    display: none;
+}
+.main_container_darkmode {
+    text-align: right;
+    display: flex;
+    padding:0 1rem;
+    justify-content: flex-end;
+}
+
+.container_darkbtn {
+    height: 24px;
+    width: 48px;
+    background: rgb(217, 223, 226);
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding:2px;
+    transition: all .5s;
+    
+}
+.darkbtn {
+    width: 22px;
+    height: 22px;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+    border-radius: 50%;
+    outline: 0;
+    transition: background-color 0.25s ease 0s, transform 0.25s ease 0s, box-shadow 0.15s ease 0s;
+}
+#darkmode:checked ~ .container_darkbtn {
+    background: rgb(101, 103, 104);
+    justify-content: flex-end;
+    transform: translateY(25deg);
+    .darkbtn {
+        background-color: #282C35;
+    }
+}
+
+// darkmode properties
+
+.darkmode_title_light {
+  color: #fff;
+}
+.darkmode_prefix_theme {
+  color: #bb72ec;
+}
+.darkmode_bar_theme {
+  background-color: #24272c;
+  border: 1px solid transparent;
+  border-left: 5px solid #383636;
+  border-right: 5px solid #383636;
+}
+.darkmode_btn_theme {
+  color: rgb(209, 209, 209);
+  background-color: #383636;
+  border:1px solid #24272c;
+}
+.darkmode_title_article_theme{
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}

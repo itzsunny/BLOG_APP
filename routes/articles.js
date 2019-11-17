@@ -63,10 +63,6 @@ router.get("/", (req, res, next) => {
 
 router.get("/:articleid", (req, res, next) => {
   let articleId = req.params.articleid;
-  // Article.findById(id, (err, article) => {
-  //   if (err) return next(err);
-  //   res.render("article", { article });
-  // });
   Article.findById(articleId)
     .populate("author", "name email")
     .exec((err, article) => {
