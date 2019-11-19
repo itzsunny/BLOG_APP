@@ -167,7 +167,7 @@ body {
 
 header {
   text-align: center;
-  height: 6.2rem;
+  height: 6.5rem;
 }
 header h2 {
   display: inline-block;
@@ -987,6 +987,17 @@ textarea {
 
   .trash, .edit {
     width: 70%;
+  }
+}
+@media all and (min-width: 1920px) {
+  .skew {
+    transform: skewy(-186deg);
+    height: 16rem;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    background-color: #fff;
   }
 }
 

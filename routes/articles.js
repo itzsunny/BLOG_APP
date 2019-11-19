@@ -114,11 +114,12 @@ router.post("/:articleid/comments", logged, (req, res, next) => {
   var articleId = req.params.articleid;
   req.body.author = req.user.id;
   req.body.articleId = articleId;
-  console.log(articleId);
 
   Comment.create(req.body, (err, commentToCreate) => {
     if (err) return next(err);
-    res.redirect(`/articles/${articleId}`);
+    Article.findByIdAndUpdate(articleId, {comments: {$push: commentToCreate._id}}, (err, updatedArticle) => {
+      res.redirect(`/articles/${articleId}`);
+    })
   });
 });
 

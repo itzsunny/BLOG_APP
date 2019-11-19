@@ -86,3 +86,15 @@ width:45%;
     width:70%;
   }
 }
+
+@media all and (min-width: 1920px){
+  .skew {
+    transform: skewy(-186deg);
+    height: 16rem;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    background-color: $light;
+  }
+}

@@ -29,10 +29,10 @@ const articleSchema = new Schema(
       required:true,
       ref:"User"
     },
-    comment:{
+    comments:[{
       type:Schema.Types.ObjectId,
       ref:"Comment"
-    },
+    }],
   },   
   { timestamps: true }
 );
