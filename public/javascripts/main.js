@@ -11,13 +11,42 @@ function readURL(input) {
 }
 
 // snippets code
+var desc = document.querySelector(".article_description");
 
-var codes = document.querySelectorAll('code');
-if(codes.length){
-  codes.forEach(code=>{
-    code.classList.add('language-javaScript');
-  })
+if (desc){
+let old_html = desc.innerHTML
+let new_htmlArr = old_html.split('');
+let counter = 0;
+let new_html = new_htmlArr.map(val=>{
+  if(val == '`'){
+    let str;
+    if(counter % 2 == 0){
+      str = '<pre><code class="language-javaScript">'
+    } else{
+      str = '</code></pre>'
+    }
+    counter++;
+    return str;
+  } else return val
+}).join('');
+desc.innerHTML = new_html;
 }
+
+
+// let new_html = old_html.split('`').join('<pre><code class="language-javaScript">')
+// new_html = new_html.split('</code>').join('</code></pre>')
+// desc.innerHTML = new_html;
+
+// var codes = document.querySelectorAll('code:not(#single-snippet)');
+// single-snippet
+// if(codes.length){
+//   codes.forEach(code=>{
+//     var pre = document.createElement("pre");
+//     pre.appendChild(code);
+//     code.classList.add('language-javaScript');
+//     desc.appendChild(pre);
+//   })
+// }
 
 function view() {
   var comments = document.querySelector("#view_all_comments");
