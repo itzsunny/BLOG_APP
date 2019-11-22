@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   right: 0;
-  padding: 0 3rem;
+  padding: 0 2rem;
   background-image: linear-gradient(72deg, #291e95, #cc007a);
   display: flex;
   justify-content: space-between;
@@ -22,12 +22,13 @@
 
 .user_name {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 2.2rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .7);
 }
 .user_name_header{
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, .7);
 }
 
 // Articles
@@ -118,10 +119,12 @@
 }
 .comments_count {
   padding-right: 1rem;
+  
 }
 .comments_count,
 .likes_count {
   padding-left: 0.2rem;
+  font-size: .9rem;
 }
 .likes {
   width: 3.5%;
@@ -320,10 +323,10 @@ textarea {
 }
 .article_subtitle {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 600;
   padding: 0.5rem 0;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.9);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -332,6 +335,13 @@ textarea {
   color: rgba(0, 0, 0, 0.7);
   line-height: 2;
 }
+
+.titleDesc{
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding:1rem 0;
+}
+
 
 
 // comments box

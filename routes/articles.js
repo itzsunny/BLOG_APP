@@ -52,7 +52,7 @@ router.post("/", logged, (req, res, next) => {
 
 router.get("/", (req, res, next) => {
   Article.find({})
-    .populate("author", "name email")
+    .populate("author", "name email").populate('comments')
     .exec((err, articles) => {
       if (err) return next(err);
       res.render("articles", { articles });
@@ -117,7 +117,7 @@ router.post("/:articleid/comments", logged, (req, res, next) => {
 
   Comment.create(req.body, (err, commentToCreate) => {
     if (err) return next(err);
-    Article.findByIdAndUpdate(articleId, {comments: {$push: commentToCreate._id}}, (err, updatedArticle) => {
+    Article.findByIdAndUpdate(articleId, { $push:{comments: commentToCreate._id}},{new:true}, (err, updatedArticle) => {
       res.redirect(`/articles/${articleId}`);
     })
   });

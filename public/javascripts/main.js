@@ -13,29 +13,49 @@ function readURL(input) {
 // snippets code
 var desc = document.querySelector(".article_description");
 
-if (desc){
-let old_html = desc.innerHTML
-let new_htmlArr = old_html.split('');
-let counter = 0;
-let new_html = new_htmlArr.map(val=>{
-  if(val == '`'){
-    let str;
-    if(counter % 2 == 0){
-      str = '<pre><code class="language-javaScript">'
-    } else{
-      str = '</code></pre>'
-    }
-    counter++;
-    return str;
-  } else return val
-}).join('');
-desc.innerHTML = new_html;
+if (desc) {
+  let old_html = desc.innerHTML;
+  let new_htmlArr = old_html.split("");
+  let counterBackTick = 0;
+  let counterHash = 0;
+  let counterStr = 0;
+  let new_html = new_htmlArr
+    .map(val => {
+      if (val == "`") {
+        let str;
+        if (counterBackTick % 2 == 0) {
+          str = '<pre><code class="language-javaScript">';
+        } else {
+          str = "</code></pre>";
+        }
+        counterBackTick++;
+        return str;
+      }
+      else if (`${val}` == "*") {
+        let str;
+        if (counterStr % 2 == 0) {
+          str = '<h2 class="titleDesc">';
+        } else {
+          str = "</h2>";
+        }
+        counterStr++;
+        return str;
+      } else if (`${val}` == "#"){
+        let str;
+        if (counterHash % 2 == 0) {
+          str = '<h2 class="article_subtitle darkmode_title_article">';
+        } else {
+          str = "</h2>";
+        }
+        counterHash++;
+        return str;
+
+      }
+      else return val;
+    })
+    .join("");
+  desc.innerHTML = new_html;
 }
-
-
-// let new_html = old_html.split('`').join('<pre><code class="language-javaScript">')
-// new_html = new_html.split('</code>').join('</code></pre>')
-// desc.innerHTML = new_html;
 
 // var codes = document.querySelectorAll('code:not(#single-snippet)');
 // single-snippet
@@ -49,9 +69,6 @@ desc.innerHTML = new_html;
 // }
 
 function view() {
-  var comments = document.querySelector("#view_all_comments");
-  var comment = document.querySelector(".view_comments");
-  var snippet = document.querySelector(".label_snippet");
 
   // darkmode
 
@@ -65,22 +82,20 @@ function view() {
   var darkmode_btn = document.querySelectorAll(".darkmode_btn");
   var darkmode_title_article = document.querySelectorAll(".darkmode_title_article");
   var times = document.querySelectorAll(".time");
+  var titleDesc = document.querySelectorAll(".titleDesc");
   var commentBox = document.getElementById("comment_box");
-  
+  var inputDark = document.querySelectorAll('.input_dark');
 
-
-  if(localStorage.getItem('darkmode') === '1'){
+  if (localStorage.getItem("darkmode") === "1") {
     darkView();
-  
-  }
-  else{
+  } else {
     lightView();
   }
 
   function darkView() {
     // darkmode text
     darkmodeCheckbox.checked = true;
-    body.style.background = "#282C35";
+    body.classList.add('body_dark');
     darkmode_title.forEach(dark => {
       dark.classList.add("darkmode_title_light");
     });
@@ -112,29 +127,41 @@ function view() {
     // dark mode articles
 
     darkmode_title_article.forEach(dark => {
-      dark.classList.add('darkmode_title_article_theme')
-    })
+      dark.classList.add("darkmode_title_article_theme");
+    });
 
-    if(times){
+    if (times) {
       times.forEach(time => {
         time.style.color = "rgb(169, 122, 212)";
+      });
+    }
+    // darkmode comment Box
+    if (commentBox) {
+      commentBox.style.backgroundColor = "rgba(0,0,0,.3)";
+      commentBox.style.color = "rgba(255,255,255,.8)";
+      commentBox.style.resize = "none";
+    }
+
+    // darkmode titleDesc
+    if(titleDesc) {
+      titleDesc.forEach(title => {
+        title.style.color = "#fff";
       })
     }
-    // comment Box
-   if(commentBox){
-     commentBox.style.backgroundColor = "rgba(0,0,0,.3)";
-     commentBox.style.color = "rgba(255,255,255,.8)";
-   }
+
+    // input dark theme
+    if(inputDark){
+      inputDark.forEach(input => {
+        input.classList.add('input_dark_theme');
+      })
+    }
 
   }
 
   function lightView() {
-
-
     // lightmode text
     darkmodeCheckbox.checked = false;
-
-    body.style.background = "#fff";
+    body.classList.remove('body_dark');
     darkmode_title.forEach(light => {
       light.classList.remove("darkmode_title_light");
     });
@@ -157,34 +184,68 @@ function view() {
       light.classList.remove("darkmode_bar_theme");
     });
 
-
     //light mode btn
- darkmode_btn.forEach(light => {
+    darkmode_btn.forEach(light => {
       light.classList.remove("darkmode_btn_theme");
     });
 
     // light mode articles
 
     darkmode_title_article.forEach(light => {
-      light.classList.remove('darkmode_title_article_theme')
-    })
+      light.classList.remove("darkmode_title_article_theme");
+    });
 
     // time light
-    if(times){
+    if (times) {
       times.forEach(time => {
         time.style.color = "#4242cc";
-      })
+      });
     }
 
     // light comment box
-    if(commentBox){
+    if (commentBox) {
       commentBox.style.backgroundColor = "#f6f8fa";
       commentBox.style.color = "rgba(0,0,0,.8)";
+      commentBox.style.resize = "none";
     }
 
+     // lightmode titleDesc
+
+     if(titleDesc) {
+      titleDesc.forEach(title => {
+        title.style.color = "rgba(0,0,0,.8)";
+      })
+    }
+
+        // input light theme
+
+        if(inputDark){
+          inputDark.forEach(input => {
+            input.classList.remove('input_dark_theme');
+          })
+        }
   }
 
-  //
+  //text area auto expand
+  var textarea = document.querySelector("textarea");
+
+  if(textarea){
+  textarea.addEventListener("keydown", autosize);
+
+  function autosize() {
+    var el = this;
+    setTimeout(function() {
+      el.style.cssText = "height:auto; padding:0";
+      // for box-sizing other than "content-box" use:
+      el.style.cssText = '-moz-box-sizing:content-box';
+      el.style.cssText = "height:" + el.scrollHeight + "px";
+    }, 0);
+  }
+}
+
+  var comments = document.querySelector("#view_all_comments");
+  var comment = document.querySelector(".view_comments");
+  var snippet = document.querySelector(".label_snippet");
 
   // comment
 
@@ -215,14 +276,13 @@ function view() {
 
   // dark mode
 
-  
   darkmodeCheckbox.addEventListener("change", () => {
-    console.log('check')
+    console.log("check");
     if (darkmodeCheckbox.checked) {
-      localStorage.setItem("darkmode",'1')
+      localStorage.setItem("darkmode", "1");
       darkView();
     } else {
-      localStorage.setItem("darkmode",'0')
+      localStorage.setItem("darkmode", "0");
       lightView();
     }
   });

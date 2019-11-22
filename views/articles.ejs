@@ -1,5 +1,4 @@
 <% include partials/header %>
-
 <div class="wrapper">
   <% include partials/darkmode %>
   <h3 class="list_all darkmode_title">List of Articles</h3>
@@ -19,9 +18,9 @@
   <div class="user_bar darkmode_bar">
     <div class="user_bar_details">
       <div class="comments">
-        <img class="comments_logo" src="/images/comments_logo.png" />
+        <a href="/articles/<%= article.id %>#view"><img class="comments_logo" src="/images/comments_logo.png" /></a>
       </div>
-      <span class="comments_count darkmode_title">0</span>
+      <span class="comments_count darkmode_title"><%= article.comments.length %></span>
       <div class="likes">
         <img class="likes_logo" src="/images/likes_logo.png" />
       </div>
@@ -29,9 +28,7 @@
       <h4 class="articles_title darkmode_title"><%= article.article_title %></h4>
     </div>
     <div class="arrow_container_container">
-      <a href="/articles/<%= article.id %>"
-        ><div class="arrow_container"></div
-      ></a>
+      <a href="/articles/<%= article.id %>"><div class="arrow_container"></div></a>
     </div>
     <div class="arrow">
       <a class="arrow_articleinfo darkmode_title" href="/articles/<%= article.id %>"> 〉〉</a>
@@ -40,8 +37,7 @@
 
   <% }) %>
   <a href="/articles/create"
-    ><button class="btn trans_btn darkmode_btn">Create Article</button></a
-  >
+    ><button class="btn trans_btn darkmode_btn">Create Article</button></a>
 </div>
 
 <% include partials/footer %>

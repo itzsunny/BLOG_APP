@@ -26,9 +26,7 @@ const userSchema = new Schema(
       required: true
     },
     phone: {
-      type: String,
-      minlength: 10,
-      maxlength: 10
+      type: String
     }
   },
   { timestamps: true }

@@ -1,22 +1,23 @@
 <% include partials/header %>
 <div class="wrapper">
+    <% include partials/darkmode %>
   <form class="form_newuser" action="/users/register" method="post">
     <input
-      class="input_value input_register"
+      class="input_value input_register input_dark"
       type="text"
       name="name"
       placeholder="Enter Your Name"
     />
 
     <input
-      class="input_value input_register"
+      class="input_value input_register input_dark"
       type="text"
       name="email"
       placeholder="Enter your Email"
     />
 
     <input
-      class="input_value input_register"
+      class="input_value input_register input_dark"
       type="password"
       name="password"
       placeholder="Choose a Password"
@@ -30,7 +31,7 @@
     </select>
 
     <input
-      class="input_value input_register"
+      class="input_value input_register input_dark"
       type="text"
       name="phone"
       placeholder="Phone Number"

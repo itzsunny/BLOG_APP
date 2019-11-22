@@ -143,6 +143,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   padding: 3rem;
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #fff;
+  transition: all 0.3s;
 }
 
 .skew {
@@ -286,7 +288,7 @@ header p {
   top: 0;
   left: 0;
   right: 0;
-  padding: 0 3rem;
+  padding: 0 2rem;
   background-image: linear-gradient(72deg, #291e95, #cc007a);
   display: flex;
   justify-content: space-between;
@@ -303,13 +305,14 @@ header p {
 
 .user_name {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 2.2rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .user_name_header {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .list_all {
@@ -411,6 +414,7 @@ header p {
 .comments_count,
 .likes_count {
   padding-left: 0.2rem;
+  font-size: 0.9rem;
 }
 
 .likes {
@@ -624,10 +628,10 @@ textarea {
 
 .article_subtitle {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 600;
   padding: 0.5rem 0;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.9);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -635,6 +639,12 @@ textarea {
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.7);
   line-height: 2;
+}
+
+.titleDesc {
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 1rem 0;
 }
 
 .comment_container {
@@ -815,6 +825,10 @@ textarea {
   transform: rotate(360deg);
 }
 
+.body_dark {
+  background-color: #282C35;
+}
+
 #darkmode {
   display: none;
 }
@@ -881,6 +895,20 @@ textarea {
 .darkmode_title_article_theme {
   color: #fff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.input_dark_theme {
+  color: #fff;
+  background-color: #282C35;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.input_dark_theme::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input_dark_theme:hover {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .transition {

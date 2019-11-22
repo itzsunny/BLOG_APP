@@ -1,6 +1,12 @@
 
 // darkmode 
 
+
+.body_dark {
+
+  background-color: #282C35;
+}
+
 #darkmode {
     display: none;
 }
@@ -63,4 +69,15 @@
 .darkmode_title_article_theme{
     color: #fff;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.input_dark_theme {
+  color:#fff;
+  background-color: #282C35;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.input_dark_theme::placeholder {
+  color: rgba(255, 255, 255,0.5);
+}
+.input_dark_theme:hover {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }

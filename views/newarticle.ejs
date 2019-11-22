@@ -1,15 +1,16 @@
 <% include partials/header %>
 <div class="wrapper">
+    <% include partials/darkmode %>
   <form class="form_newuser" action="/articles" method="post">
     <input
-      class="input_value"
+      class="input_value input_dark"
       type="text"
       name="article_title"
       placeholder="Heading"
     />
 
     <textarea
-      class="input_value input_articleintro"
+      class="input_value input_articleintro input_dark"
       name="article_intro"
       placeholder="About this article"
       rows="4"
@@ -17,7 +18,7 @@
     ></textarea>
 
     <input
-      class="input_value"
+      class="input_value input_dark"
       type="text"
       name="article_subtitle"
       placeholder="Subtitle"
@@ -39,7 +40,7 @@
     </div>
 
     <textarea
-      class="input_value input_articledescription"
+      class="input_value input_articledescription input_dark"
       name="article_description"
       placeholder="Description"
       rows="10"
