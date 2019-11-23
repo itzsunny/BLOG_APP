@@ -637,7 +637,7 @@ textarea {
 }
 
 .article_description {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: rgba(0, 0, 0, 0.9);
   line-height: 2;
 }
@@ -645,6 +645,7 @@ textarea {
 .titleDesc {
   font-size: 1.1rem;
   font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
   padding: 1rem 0;
 }
 
