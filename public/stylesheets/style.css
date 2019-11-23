@@ -144,7 +144,7 @@ body {
   padding: 3rem;
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #fff;
-  transition: all 0.3s;
+  transition: background-color 0.3s;
 }
 
 .skew {
@@ -356,6 +356,7 @@ header p {
   padding: 0.2rem 0.5rem;
   color: #797979;
   border-radius: 1rem;
+  text-align: left;
 }
 
 .author_name {
@@ -636,8 +637,8 @@ textarea {
 }
 
 .article_description {
-  font-size: 1rem;
-  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.9);
   line-height: 2;
 }
 
@@ -826,7 +827,7 @@ textarea {
 }
 
 .body_dark {
-  background-color: #282C35;
+  background-color: #282c35;
 }
 
 #darkmode {
@@ -868,7 +869,7 @@ textarea {
   transform: translateY(25deg);
 }
 #darkmode:checked ~ .container_darkbtn .darkbtn {
-  background-color: #282C35;
+  background-color: #282c35;
 }
 
 .darkmode_title_light {
@@ -899,7 +900,7 @@ textarea {
 
 .input_dark_theme {
   color: #fff;
-  background-color: #282C35;
+  background-color: #282c35;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
