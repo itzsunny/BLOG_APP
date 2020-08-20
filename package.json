@@ -7,7 +7,7 @@
     "prod": "node ./bin/www"
   },
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "connect-mongo": "^3.1.2",
     "connect-mongoose": "0.0.2",
     "cookie-parser": "~1.4.4",
